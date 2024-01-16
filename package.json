@@ -9,8 +9,7 @@
     "dev": "NODE_ENV=DEVELOPMENT nodemon backend/app.js",
     "prod": "NODE_ENV=PRODUCTION nodemon backend/app.js",
     "seeder": "node backend/seeder/seeder.js",
-    "lint": "eslint --fix --ext .js,.jsx .",
-    "prepush": "npm run lint"
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "author": "Atul Tathagat",
   "license": "ISC",
