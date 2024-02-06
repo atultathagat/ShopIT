@@ -46,7 +46,7 @@ export const updateProduct = catchAsyncErrors(async (req, res) => {
 });
 
 // Delete product => /api/v1/admin/products/:id
-export const deleteProduct = catchAsyncErrors(async (req, res) => {
+export const deleteProduct = catchAsyncErrors(async (req, res, next) => {
   const product = await productModel.findById(req?.params?.id);
   if (!product) {
     return next(new ErrorHandler('Product not found', 404));

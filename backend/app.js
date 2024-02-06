@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 // Import all the routes
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 import { connectDataBase } from './config/dbConnection.js';
 import errorMiddleware from './middlewares/error.js';
 
@@ -22,6 +23,7 @@ process.on('uncaughtException', (err) => {
 connectDataBase();
 app.use('/api/v1', productRoutes);
 app.use('/api/v1', userRoutes);
+app.use('/api/v1', orderRoutes);
 app.use(errorMiddleware);
 const server = app.listen(process.env.PORT, () => {
   console.log(
