@@ -54,3 +54,50 @@ export const deleteProduct = catchAsyncErrors(async (req, res, next) => {
   await product.deleteOne();
   return res.status(200).json({ message: 'Product deleted' });
 });
+
+// Create/update product review => /api/v1/reveiws
+export const createProductReview = catchAsyncErrors(async (req, res, next) => {
+  const { ratings, comment, productId } = req?.body;
+  const review = {
+    user: req?.user?._id,
+    ratings: Number(ratings),
+    comment,
+  };
+  const product = await productModel.findById(productId);
+  if (!product) {
+    return next(new ErrorHandler('Product not found', 404));
+  }
+  const existingReview = product.reviews.find((r) => r.user.toString() === req.user._id.toString());
+  if (existingReview) {
+    existingReview.ratings = Number(ratings);
+    existingReview.comment = comment;
+  } else {
+    product.reviews.push(review);
+    product.numOfReviews = product.reviews.length;
+  }
+  product.ratings = (product.reviews.reduce((acc, r) => acc + r.ratings, 0)) / product.numOfReviews;
+  await product.save({ validateBeforeSave: false });
+  return res.status(200).json({ success: true });
+});
+
+// Get product review => /api/v1/reveiws
+export const getProductReviews = catchAsyncErrors(async (req, res, next) => {
+  const product = await productModel.findById(req?.query?.id);
+  if (!product) {
+    return next(new ErrorHandler('Product not found', 404));
+  }
+  return res.status(200).json({ reviews: product.reviews });
+});
+
+// Delete product review => /api/v1/reveiws
+export const deleteProductReview = catchAsyncErrors(async (req, res, next) => {
+  let product = await productModel.findById(req?.query?.id);
+  if (!product) {
+    return next(new ErrorHandler('Product not found', 404));
+  }
+  const reviews = product.reviews.filter((r) => r.user.toString() !== req?.query?.user);
+  const numOfReviews = reviews.length;
+  const ratings = numOfReviews === 0 ? 0 : (product.reviews.reduce((acc, r) => acc + r.ratings, 0)) / product.numOfReviews;
+  product = await productModel.findByIdAndUpdate(req?.query?.id, { reviews, numOfReviews, ratings }, { new: true });
+  return res.status(200).json({ product, success: true });
+});
