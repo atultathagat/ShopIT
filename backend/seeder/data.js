@@ -11,7 +11,7 @@ export default [
         url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/nkkjkta63uiazppzkmjf.jpg',
       },
       {
-        public_id: 'shopit/demo/hz1iwdqzrvxtfxincvju',
+        public_id: 'shopit/demo/hz1iwdqzrvxtfxincvju', 
         url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/hz1iwdqzrvxtfxincvju.jpg',
       },
       {
