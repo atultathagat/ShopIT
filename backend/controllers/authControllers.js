@@ -13,7 +13,7 @@ export default catchAsyncErrors(async (req, res) => {
   const user = await User.create({
     name,
     email,
-    password,
+    password
   });
   sendToken(user, 201, res);
 });
@@ -42,7 +42,7 @@ export const loginUser = catchAsyncErrors(async (req, res, next) => {
 export const logoutUser = async (req, res) => {
   const options = {
     expires: new Date(Date.now()),
-    httpOnly: true,
+    httpOnly: true
   };
   res.cookie('token', null, options);
   res.status(200).json({ message: 'Logged out' });
@@ -63,10 +63,10 @@ export const forgotPassword = catchAsyncErrors(async (req, res, next) => {
     await sendEmail({
       email: user?.email,
       subject: 'ShopIT Password Recovery',
-      message,
+      message
     });
     return res.status(200).json({
-      message: `Email sent to the user ${user.email}`,
+      message: `Email sent to the user ${user.email}`
     });
   } catch (error) {
     user.resetPasswordToken = undefined;
@@ -115,7 +115,7 @@ export const updatePassword = catchAsyncErrors(async (req, res, next) => {
 export const updateUserProfile = catchAsyncErrors(async (req, res) => {
   const newUserData = {
     name: req?.body?.name,
-    email: req?.body?.email,
+    email: req?.body?.email
   };
   const user = await userModel.findByIdAndUpdate(req?.user?._id, newUserData, { new: true });
   res.status(200).json({ user });
@@ -146,7 +146,7 @@ export const updateUserProfileByAdmin = catchAsyncErrors(async (req, res) => {
   const newUserData = {
     name: req?.body?.name,
     email: req?.body?.email,
-    role: req?.body?.role,
+    role: req?.body?.role
   };
   const user = await userModel.findByIdAndUpdate(req?.params?.id, newUserData, { new: true });
   res.status(200).json({ user });

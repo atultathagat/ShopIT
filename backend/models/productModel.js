@@ -4,32 +4,32 @@ const productSchema = mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please enter product name'],
-    maxLength: [200, 'Product length cannot exceed more than 200 characters'],
+    maxLength: [200, 'Product length cannot exceed more than 200 characters']
   },
   price: {
     type: Number,
     required: [true, 'Please enter product price'],
-    maxLength: [5, 'Product price cannot exceed more than 5 digits'],
+    maxLength: [5, 'Product price cannot exceed more than 5 digits']
   },
   description: {
     type: String,
-    required: [true, 'Please enter product description'],
+    required: [true, 'Please enter product description']
   },
   ratings: {
     type: Number,
-    default: 0,
+    default: 0
   },
   images: [
     {
       public_id: {
         type: String,
-        required: true,
+        required: true
       },
       url: {
         type: String,
-        required: true,
-      },
-    },
+        required: true
+      }
+    }
   ],
   category: {
     type: String,
@@ -45,45 +45,45 @@ const productSchema = mongoose.Schema({
         'Books',
         'Sports',
         'Outdoor',
-        'Home',
+        'Home'
       ],
-      message: 'Please select correct category',
-    },
+      message: 'Please select correct category'
+    }
   },
   seller: {
     type: String,
-    required: [true, 'Please enter product seller'],
+    required: [true, 'Please enter product seller']
   },
   stock: {
     type: Number,
-    required: [true, 'Please enter product stock'],
+    required: [true, 'Please enter product stock']
   },
   numOfReviews: {
     type: Number,
-    default: 0,
+    default: 0
   },
   reviews: [
     {
       user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Users',
-        required: true,
+        required: true
       },
       ratings: {
         type: Number,
-        required: true,
+        required: true
       },
       comment: {
         type: String,
-        required: true,
-      },
-    },
+        required: true
+      }
+    }
   ],
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Users',
-    required: true,
-  },
+    required: true
+  }
 }, { timestamps: true });
 
 export default mongoose.model('Product', productSchema);

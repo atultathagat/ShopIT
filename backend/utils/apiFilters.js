@@ -9,8 +9,8 @@ export default class {
       ? {
         name: {
           $regex: this.queryStr.keyword,
-          $options: 'i',
-        },
+          $options: 'i'
+        }
       }
       : {};
     this.query = this.query.find({ ...keyword });
@@ -20,14 +20,14 @@ export default class {
   find() {
     let queryStrForFind = { ...this.queryStr };
     const fieldsToBeDropped = ['keyword', 'page', 'resPerPage'];
-    fieldsToBeDropped.forEach((fieldName) => delete queryStrForFind[fieldName]);
+    fieldsToBeDropped.forEach(fieldName => delete queryStrForFind[fieldName]);
     queryStrForFind = JSON.stringify(queryStrForFind);
     const comparisonKeyWords = ['ge', 'le', 'gt', 'lt'];
-    comparisonKeyWords.every((comparisonKeyWord) => {
+    comparisonKeyWords.every(comparisonKeyWord => {
       if (queryStrForFind.includes(comparisonKeyWord)) {
         queryStrForFind = queryStrForFind.replace(
           comparisonKeyWord,
-          `$${comparisonKeyWord}`,
+          `$${comparisonKeyWord}`
         );
         return false;
       }

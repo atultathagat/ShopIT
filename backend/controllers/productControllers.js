@@ -13,7 +13,7 @@ export const getProducts = catchAsyncErrors(async (req, res) => {
   products = await apiFilters.query.clone();
   res.status(200).json({
     filterProductsCount,
-    products,
+    products
   });
 });
 
@@ -40,7 +40,7 @@ export const updateProduct = catchAsyncErrors(async (req, res) => {
     return next(new ErrorHandler('Product not found', 404));
   }
   product = await productModel.findByIdAndUpdate(req?.params?.id, req?.body, {
-    new: true,
+    new: true
   });
   return res.status(200).json({ product });
 });
@@ -61,13 +61,13 @@ export const createProductReview = catchAsyncErrors(async (req, res, next) => {
   const review = {
     user: req?.user?._id,
     ratings: Number(ratings),
-    comment,
+    comment
   };
   const product = await productModel.findById(productId);
   if (!product) {
     return next(new ErrorHandler('Product not found', 404));
   }
-  const existingReview = product.reviews.find((r) => r.user.toString() === req.user._id.toString());
+  const existingReview = product.reviews.find(r => r.user.toString() === req.user._id.toString());
   if (existingReview) {
     existingReview.ratings = Number(ratings);
     existingReview.comment = comment;
@@ -95,7 +95,7 @@ export const deleteProductReview = catchAsyncErrors(async (req, res, next) => {
   if (!product) {
     return next(new ErrorHandler('Product not found', 404));
   }
-  const reviews = product.reviews.filter((r) => r.user.toString() !== req?.query?.user);
+  const reviews = product.reviews.filter(r => r.user.toString() !== req?.query?.user);
   const numOfReviews = reviews.length;
   const ratings = numOfReviews === 0 ? 0 : (product.reviews.reduce((acc, r) => acc + r.ratings, 0)) / product.numOfReviews;
   product = await productModel.findByIdAndUpdate(req?.query?.id, { reviews, numOfReviews, ratings }, { new: true });

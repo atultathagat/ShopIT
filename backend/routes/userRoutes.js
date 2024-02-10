@@ -1,7 +1,7 @@
 import express from 'express';
 import createUser, {
   deleteUserProfileByAdmin,
-  forgotPassword, getAllUsers, getUserDetails, getUserProfile, loginUser, logoutUser, resetPassword, updatePassword, updateUserProfile, updateUserProfileByAdmin,
+  forgotPassword, getAllUsers, getUserDetails, getUserProfile, loginUser, logoutUser, resetPassword, updatePassword, updateUserProfile, updateUserProfileByAdmin
 } from '../controllers/authControllers.js';
 import isUserAuthenticated, { authorizeRoles } from '../middlewares/auth.js';
 

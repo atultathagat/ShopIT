@@ -8,22 +8,22 @@ export default [
     images: [
       {
         public_id: 'shopit/demo/nkkjkta63uiazppzkmjf',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/nkkjkta63uiazppzkmjf.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/nkkjkta63uiazppzkmjf.jpg'
       },
       {
-        public_id: 'shopit/demo/hz1iwdqzrvxtfxincvju', 
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/hz1iwdqzrvxtfxincvju.jpg',
+        public_id: 'shopit/demo/hz1iwdqzrvxtfxincvju',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/hz1iwdqzrvxtfxincvju.jpg'
       },
       {
         public_id: 'shopit/demo/oc2dvvkxyxukc13y9pjv',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/oc2dvvkxyxukc13y9pjv.jpg',
-      },
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577488/shopit/demo/oc2dvvkxyxukc13y9pjv.jpg'
+      }
     ],
     category: 'Electronics',
     seller: 'Ebay',
     stock: 50,
     numOfReviews: 32,
-    reviews: [],
+    reviews: []
   },
   {
     name: 'CAN USB FD Adapter (GC-CAN-USB-FD)',
@@ -34,26 +34,26 @@ export default [
     images: [
       {
         public_id: 'shopit/demo/e3hweb3tbp5zacfi564c',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/e3hweb3tbp5zacfi564c.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/e3hweb3tbp5zacfi564c.jpg'
       },
       {
         public_id: 'shopit/demo/mjcc0kg0lzxegrauh8qc',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/mjcc0kg0lzxegrauh8qc.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/mjcc0kg0lzxegrauh8qc.jpg'
       },
       {
         public_id: 'shopit/demo/iruzmpgrhb6xyqheppxg',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/iruzmpgrhb6xyqheppxg.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/iruzmpgrhb6xyqheppxg.jpg'
       },
       {
         public_id: 'shopit/demo/bj3auijqcxxvkwdohznb',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577510/shopit/demo/bj3auijqcxxvkwdohznb.jpg',
-      },
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577510/shopit/demo/bj3auijqcxxvkwdohznb.jpg'
+      }
     ],
     category: 'Electronics',
     seller: 'Amazon',
     stock: 0,
     numOfReviews: 2,
-    reviews: [],
+    reviews: []
   },
   {
     name: 'CHARMOUNT Full Motion TV Wall Mount Swivel',
@@ -64,18 +64,18 @@ export default [
     images: [
       {
         public_id: 'shopit/demo/yqqwxrgst2pi3frtngaw',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577531/shopit/demo/yqqwxrgst2pi3frtngaw.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577531/shopit/demo/yqqwxrgst2pi3frtngaw.jpg'
       },
       {
         public_id: 'shopit/demo/pgcwny8xyshsnwaiikbm',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577531/shopit/demo/pgcwny8xyshsnwaiikbm.jpg',
-      },
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577531/shopit/demo/pgcwny8xyshsnwaiikbm.jpg'
+      }
     ],
     category: 'Electronics',
     seller: 'Amazon',
     stock: 1,
     numOfReviews: 12,
-    reviews: [],
+    reviews: []
   },
   {
     name: 'Bose QuietComfort 35 II Wireless Bluetooth Headphones',
@@ -86,18 +86,18 @@ export default [
     images: [
       {
         public_id: 'shopit/demo/yxbrklp7snr7dgxfrxu9',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577543/shopit/demo/yxbrklp7snr7dgxfrxu9.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577543/shopit/demo/yxbrklp7snr7dgxfrxu9.jpg'
       },
       {
         public_id: 'shopit/demo/i8ge1ilin2fz9tk2okni',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577543/shopit/demo/i8ge1ilin2fz9tk2okni.jpg',
-      },
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577543/shopit/demo/i8ge1ilin2fz9tk2okni.jpg'
+      }
     ],
     category: 'Headphones',
     seller: 'Amazon',
     stock: 11,
     numOfReviews: 112,
-    reviews: [],
+    reviews: []
   },
   {
     name: 'Apple AirPods with Charging Case (Wired)',
@@ -108,22 +108,22 @@ export default [
     images: [
       {
         public_id: 'shopit/demo/yj00oalanbzmbzctsbln',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577557/shopit/demo/yj00oalanbzmbzctsbln.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577557/shopit/demo/yj00oalanbzmbzctsbln.jpg'
       },
       {
         public_id: 'shopit/demo/mijzcdd5sle8a2any1i8',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577557/shopit/demo/mijzcdd5sle8a2any1i8.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577557/shopit/demo/mijzcdd5sle8a2any1i8.jpg'
       },
       {
         public_id: 'shopit/demo/kxckb0o7fbdwqgmugoct',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577557/shopit/demo/kxckb0o7fbdwqgmugoct.jpg',
-      },
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577557/shopit/demo/kxckb0o7fbdwqgmugoct.jpg'
+      }
     ],
     category: 'Electronics',
     seller: 'Amazon',
     stock: 122,
     numOfReviews: 2671,
-    reviews: [],
+    reviews: []
   },
   {
     name: 'Cable Boom Microphone - Volume Control for Playstation PS4 or Xbox',
@@ -134,14 +134,14 @@ export default [
     images: [
       {
         public_id: 'shopit/demo/xmndneguqtrcutpf9wcz',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577572/shopit/demo/xmndneguqtrcutpf9wcz.jpg',
-      },
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577572/shopit/demo/xmndneguqtrcutpf9wcz.jpg'
+      }
     ],
     category: 'Accessories',
     seller: 'Amazon',
     stock: 1123,
     numOfReviews: 6,
-    reviews: [],
+    reviews: []
   },
   {
     name: 'Nikon D3500 W/ AF-P DX NIKKOR 18-55mm f/3.5-5.6G VR Black',
@@ -152,22 +152,22 @@ export default [
     images: [
       {
         public_id: 'shopit/demo/q6ybe84qlkzwet9qwptz',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/q6ybe84qlkzwet9qwptz.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/q6ybe84qlkzwet9qwptz.jpg'
       },
       {
         public_id: 'shopit/demo/niqqio1faynnscubkkmd',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/niqqio1faynnscubkkmd.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/niqqio1faynnscubkkmd.jpg'
       },
       {
         public_id: 'shopit/demo/dy3nhjgsdgqcnrwf8u2h',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/dy3nhjgsdgqcnrwf8u2h.jpg',
-      },
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577585/shopit/demo/dy3nhjgsdgqcnrwf8u2h.jpg'
+      }
     ],
     category: 'Cameras',
     seller: 'Amazon',
     stock: 131,
     numOfReviews: 222,
-    reviews: [],
+    reviews: []
   },
   {
     name: 'Apple MacBook Air (13-inch, 8GB RAM, 256GB SSD Storage) - Space Gray',
@@ -178,22 +178,22 @@ export default [
     images: [
       {
         public_id: 'shopit/demo/jzqaj98nnhy0hcsilx9y',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577597/shopit/demo/jzqaj98nnhy0hcsilx9y.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577597/shopit/demo/jzqaj98nnhy0hcsilx9y.jpg'
       },
       {
         public_id: 'shopit/demo/welkq4dgfi5267usmj0n',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577597/shopit/demo/welkq4dgfi5267usmj0n.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577597/shopit/demo/welkq4dgfi5267usmj0n.jpg'
       },
       {
         public_id: 'shopit/demo/pabtjloyzenmr6z8klcr',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577600/shopit/demo/pabtjloyzenmr6z8klcr.jpg',
-      },
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577600/shopit/demo/pabtjloyzenmr6z8klcr.jpg'
+      }
     ],
     category: 'Laptops',
     seller: 'Amazon',
     stock: 0,
     numOfReviews: 56,
-    reviews: [],
+    reviews: []
   },
   {
     name: 'Kauffman Orchards Homegrown McIntosh Apples',
@@ -204,17 +204,17 @@ export default [
     images: [
       {
         public_id: 'shopit/demo/mq0zpyzmzqokphs9m9we',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577619/shopit/demo/mq0zpyzmzqokphs9m9we.jpg',
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577619/shopit/demo/mq0zpyzmzqokphs9m9we.jpg'
       },
       {
         public_id: 'shopit/demo/pkyy8rifxpesiwpy23kk',
-        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577619/shopit/demo/pkyy8rifxpesiwpy23kk.jpg',
-      },
+        url: 'http://res.cloudinary.com/udemy-courses/image/upload/v1698577619/shopit/demo/pkyy8rifxpesiwpy23kk.jpg'
+      }
     ],
     category: 'Food',
     seller: "Kauffman's Fruit Farm & Market",
     stock: 500,
     numOfReviews: 1,
-    reviews: [],
-  },
+    reviews: []
+  }
 ];

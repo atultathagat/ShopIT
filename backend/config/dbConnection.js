@@ -7,7 +7,7 @@ export const connectDataBase = () => {
   } else if (process.env.NODE_ENV === 'PRODUCTION') {
     DB_URI = process.env.DB_URI;
   }
-  mongoose.connect(DB_URI).then((conn) => {
+  mongoose.connect(DB_URI).then(conn => {
     console.log(`MongoDB database connected with HOST: ${conn.connection.host}`);
   });
 };

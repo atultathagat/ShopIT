@@ -13,7 +13,7 @@ export default catchAsyncErrors(async (req, res) => {
     shippingAmount,
     totalAmount,
     paymentMethod,
-    paymentInfo,
+    paymentInfo
   } = req?.body;
   const order = await orderModel.create({
     orderItems,
@@ -24,7 +24,7 @@ export default catchAsyncErrors(async (req, res) => {
     totalAmount,
     paymentMethod,
     paymentInfo,
-    user: req?.user?._id,
+    user: req?.user?._id
   });
   res.status(200).json({ order });
 });
@@ -59,7 +59,7 @@ export const updateOrder = catchAsyncErrors(async (req, res, next) => {
   if (order?.orderStatus === 'Delivered') {
     return next(new ErrorHandler('You have already delivered this order', 400));
   }
-  order?.orderItems.forEach(async (orderItem) => {
+  order?.orderItems.forEach(async orderItem => {
     const product = await productModel.findById(orderItem?.product);
     if (!product) {
       return next(new ErrorHandler(`No order found with the given order id: ${orderItem?.product.toString()}`, 404));

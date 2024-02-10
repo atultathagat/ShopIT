@@ -4,90 +4,90 @@ const orderSchema = mongoose.Schema({
   shippingInfo: {
     address: {
       type: String,
-      required: true,
+      required: true
     },
     city: {
       type: String,
-      required: true,
+      required: true
     },
     phoneNo: {
       type: String,
-      required: true,
+      required: true
     },
     zipCode: {
       type: String,
-      required: true,
+      required: true
     },
     country: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'User',
+    ref: 'User'
   },
   orderItems: [{
     name: {
       type: String,
-      required: true,
+      required: true
     },
     quantity: {
       type: Number,
-      required: true,
+      required: true
     },
     image: {
       type: String,
-      required: true,
+      required: true
     },
     price: {
       type: String,
-      required: true,
+      required: true
     },
     product: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'Product',
-    },
+      ref: 'Product'
+    }
   }],
   paymentMethod: {
     type: String,
     required: [true, 'Please select payment method'],
     enum: {
       values: ['COD', 'Card'],
-      message: 'Please select COD or Card',
-    },
+      message: 'Please select COD or Card'
+    }
   },
   paymentInfo: {
     id: String,
-    status: String,
+    status: String
   },
   itemsPrice: {
     type: Number,
-    required: true,
+    required: true
   },
   taxAmount: {
     type: Number,
-    required: true,
+    required: true
   },
   shippingAmount: {
     type: Number,
-    required: true,
+    required: true
   },
   totalAmount: {
     type: Number,
-    required: true,
+    required: true
   },
   orderStatus: {
     type: String,
     default: 'Processing',
     enum: {
       values: ['Processing', 'Shipped', 'Delivered'],
-      message: 'Please select correct order status',
-    },
+      message: 'Please select correct order status'
+    }
   },
-  deliveredAt: Date,
+  deliveredAt: Date
 }, { timestamps: true });
 
 export default mongoose.model('Order', orderSchema);

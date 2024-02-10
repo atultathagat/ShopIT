@@ -14,7 +14,7 @@ app.use(cookieParser());
 dotenv.config({ path: 'backend/config/config.env' });
 
 // Handle uncaught exception
-process.on('uncaughtException', (err) => {
+process.on('uncaughtException', err => {
   console.log(`ERROR: ${err}`);
   console.log('Shuttting down due to uncaught exception');
   process.exit(1);
@@ -28,12 +28,12 @@ app.use(errorMiddleware);
 const server = app.listen(process.env.PORT, () => {
   console.log(
     `Server started on PORT: ${process.env.PORT} in ${
-      process.env.NODE_ENV} mode.`,
+      process.env.NODE_ENV} mode.`
   );
 });
 
 // Handle unhandle promise rejection
-process.on('unhandledRejection', (err) => {
+process.on('unhandledRejection', err => {
   console.log(`ERROR: ${err}`);
   console.log('Shuttting down the server due to unahndled promise rejection');
   server.close(() => {
