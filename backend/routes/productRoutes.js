@@ -11,8 +11,8 @@ import {
 } from '../controllers/productControllers.js';
 import isUserAuthenticated, { authorizeRoles } from '../middlewares/auth.js';
 
-const router = express.Rout;
-router.route('/products').get(isUserAuthenticated, getProducts);
+const router = express.Router();
+router.route('/products').get(getProducts);
 router.route('/admin/products').post(isUserAuthenticated, authorizeRoles(['admin']), newProduct);
 router.route('/products/:id').get(getProductDetails);
 router.route('/admin/products/:id').put(isUserAuthenticated, authorizeRoles(['admin']), updateProduct);

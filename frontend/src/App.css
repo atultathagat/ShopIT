@@ -1,5 +1,9 @@
 html,
 body {
+  iframe
+{
+    display: none;
+}
   font-family: "Amazon Ember";
   width: 100%;
   height: 100%;

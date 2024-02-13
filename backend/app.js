@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 // Import all the routes
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -10,6 +11,7 @@ import errorMiddleware from './middlewares/error.js';
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use(cookieParser());
 dotenv.config({ path: 'backend/config/config.env' });
 

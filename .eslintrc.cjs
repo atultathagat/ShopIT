@@ -32,6 +32,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 0,
     'no-console': 'error',
     'no-inline-comments': 'error',
+    'react/react-in-jsx-scope': 0,
     'react/jsx-filename-extension': [
       1,
       {
