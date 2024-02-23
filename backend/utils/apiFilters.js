@@ -22,17 +22,16 @@ export default class {
     const fieldsToBeDropped = ['keyword', 'page', 'resPerPage'];
     fieldsToBeDropped.forEach(fieldName => delete queryStrForFind[fieldName]);
     queryStrForFind = JSON.stringify(queryStrForFind);
-    const comparisonKeyWords = ['ge', 'le', 'gt', 'lt'];
-    comparisonKeyWords.every(comparisonKeyWord => {
+    const comparisonKeyWords = ['gte', 'lte', 'gt', 'lt'];
+    comparisonKeyWords.forEach(comparisonKeyWord => {
       if (queryStrForFind.includes(comparisonKeyWord)) {
         queryStrForFind = queryStrForFind.replace(
           comparisonKeyWord,
           `$${comparisonKeyWord}`
         );
-        return false;
       }
-      return true;
     });
+    queryStrForFind  = queryStrForFind.replaceAll('$$', '$');
     queryStrForFind = JSON.parse(queryStrForFind);
     this.query = this.query.find(queryStrForFind);
     return this;

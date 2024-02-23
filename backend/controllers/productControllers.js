@@ -13,7 +13,8 @@ export const getProducts = catchAsyncErrors(async (req, res) => {
   products = await apiFilters.query.clone();
   res.status(200).json({
     filterProductsCount,
-    products
+    products,
+    resPerPage: (+req?.query?.resPerPage)
   });
 });
 

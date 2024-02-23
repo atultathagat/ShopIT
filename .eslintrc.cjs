@@ -59,10 +59,6 @@ module.exports = {
       'error',
       'as-needed'
     ],
-    'complexity': [
-      'error',
-      10
-    ],
     'semi': [
       'error',
       'always'
