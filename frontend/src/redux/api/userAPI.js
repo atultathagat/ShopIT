@@ -4,7 +4,7 @@ import { setUser, setUserAuthenticated } from "../filters/userSlice";
 const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000/api/v1" }),
-  tagTypes: ["a"],
+  tagTypes: ["User"],
   endpoints: (builder) => ({
     getMe: builder.query({
       query: (token) => ({
@@ -21,7 +21,7 @@ const userApi = createApi({
           console.log(error);
         }
       },
-      providesTags: ["a"],
+      providesTags: ["User"],
     }),
     updateUserProfile: builder.mutation({
       query: ({ name, email, token }) => ({
@@ -30,7 +30,7 @@ const userApi = createApi({
         body: { name, email },
         headers: { token },
       }),
-      invalidatesTags: ["a"],
+      invalidatesTags: ["User"],
     }),
   }),
 });
