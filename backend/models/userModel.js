@@ -30,7 +30,7 @@ const userSchema = mongoose.Schema({
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date
-}, { timstamps: true });
+}, { timestamps: true });
 
 // Encrypting the password before saving the user
 userSchema.pre('save', async function (next) {

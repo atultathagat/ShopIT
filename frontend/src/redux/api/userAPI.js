@@ -1,27 +1,38 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { setUser, setUserAuthenticated } from '../filters/userSlice';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { setUser, setUserAuthenticated } from "../filters/userSlice";
 
-const userApi =  createApi({
-  reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/api/v1' }),
-  endpoints: builder => ({
+const userApi = createApi({
+  reducerPath: "userApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000/api/v1" }),
+  tagTypes: ["a"],
+  endpoints: (builder) => ({
     getMe: builder.query({
-      query: token => ({
-        url: '/me',
-        headers: {token}
+      query: (token) => ({
+        url: "/me",
+        headers: { token },
       }),
-      transformResponse: results => results.user,
-      async onQueryStarted(__, {dispatch, queryFulfilled}) {
+      transformResponse: (results) => results.user,
+      async onQueryStarted(__, { dispatch, queryFulfilled }) {
         try {
-        const {data} = await queryFulfilled;
-        dispatch(setUser(data));
-        dispatch(setUserAuthenticated(true));
-        } catch(error) {
+          const { data } = await queryFulfilled;
+          dispatch(setUser(data));
+          dispatch(setUserAuthenticated(true));
+        } catch (error) {
           console.log(error);
         }
-      }
-    })
-    })
-  });
-export const {useGetMeQuery} = userApi;
+      },
+      providesTags: ["a"],
+    }),
+    updateUserProfile: builder.mutation({
+      query: ({ name, email, token }) => ({
+        url: "/me/update",
+        method: "PUT",
+        body: { name, email },
+        headers: { token },
+      }),
+      invalidatesTags: ["a"],
+    }),
+  }),
+});
+export const { useGetMeQuery, useUpdateUserProfileMutation } = userApi;
 export default userApi;

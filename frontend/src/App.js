@@ -7,6 +7,8 @@ import {Toaster} from 'react-hot-toast';
 import ProductDetails from './components/product/ProductDetails.jsx';
 import Login from './components/auth/Login.jsx';
 import Register from './components/auth/Register.jsx';
+import UpdateProfile from './components/user/UpdateProfile.jsx';
+import Profile from './components/user/Profile.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +21,8 @@ function App() {
             <Route path="/product/:id" element={<ProductDetails/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
+            <Route path="/me/profile" element={<Profile/>}/>
+            <Route path="/me/update_profile" element={<UpdateProfile/>}/>
           </Routes>
         </div>
         <Footer />
