@@ -4,7 +4,10 @@ import ErrorHandler from '../utils/errorHandler.js';
 import catchAsyncErrors from './catchAsyncErrors.js';
 
 export default catchAsyncErrors(async (req, res, next) => {
-  const { token } = req.cookies;
+  let token = req.cookies.token;
+  if(!token) {
+    token = req.headers.token;
+  }
   if (!token) {
     return next(new ErrorHandler('Login first to access this resource', 401));
   }
