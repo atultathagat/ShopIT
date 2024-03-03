@@ -24,7 +24,7 @@ export default function Profile() {
       <p>{user?.email}</p>
 
       <h4>Joined On</h4>
-      <p>{user?.createdAt.substring(0, 10)}</p>
+      <p>{user?.createdAt?.substring(0, 10)}</p>
     </div>
   </div>
 </UserLayout>

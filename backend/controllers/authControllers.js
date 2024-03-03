@@ -6,6 +6,7 @@ import getResetPasswordTemplate from '../utils/emailTemplates.js';
 import ErrorHandler from '../utils/errorHandler.js';
 import sendEmail from '../utils/sendEmail.js';
 import sendToken from '../utils/sendToken.js';
+import { delete_file, upload_file } from '../utils/cloudinary.js';
 
 // Register user => /api/v1/register
 export default catchAsyncErrors(async (req, res) => {
@@ -16,6 +17,16 @@ export default catchAsyncErrors(async (req, res) => {
     password
   });
   sendToken(user, 201, res);
+});
+
+// Upload user avatar => /api/v1/me/upload_avatar
+export const uploadAvatar = catchAsyncErrors(async (req, res) => {
+  if(req?.user?.avatar?.url) {
+    await delete_file(req?.user?.avatar?.public_id)
+  }
+  const avatar = await upload_file(req.body.avatar, 'shopit/avatars')
+  const user = await userModel.findByIdAndUpdate(req?.user?._id, {avatar})
+  return res.status(200).json(user);
 });
 
 // Login user => /api/v1/login

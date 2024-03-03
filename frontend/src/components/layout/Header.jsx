@@ -1,14 +1,13 @@
 import React from 'react';
 import Search from './Search';
 import { useGetMeQuery } from '../../redux/api/userAPI';
-import Cookies from 'universal-cookie';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLazyLogoutQuery } from '../../redux/api/authApi';
 export default function Header() {
-  const {isLoading} = useGetMeQuery(new Cookies().get('token'));
+  const {isLoading} = useGetMeQuery();
   const {user} = useSelector(state => state.auth);
-  const navigate = useNavigate();
+const navigate = useNavigate();
   const [logout] = useLazyLogoutQuery();
   const logoutUserHandler = async () => {
    await  logout();

@@ -2,6 +2,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import userApi from './userAPI';
 import Cookies from 'universal-cookie';
+import { setUser } from '../filters/userSlice';
 
 const authApi = createApi({
   reducerPath: 'authApi',
@@ -53,11 +54,13 @@ const authApi = createApi({
       query: () => ({
         url: '/logout'
       }),
-      async onQueryStarted(__, { queryFulfilled }) {
+      async onQueryStarted(__, { queryFulfilled, dispatch }) {
         try {
           await queryFulfilled;
           const cookies = new Cookies();
           cookies.remove('token');
+          dispatch(setUser(null));
+          dispatch(setUserAuthenticated(false));
         } catch (error) {
           console.log(error);
         }

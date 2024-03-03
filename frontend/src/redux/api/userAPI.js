@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { setUser, setUserAuthenticated } from "../filters/userSlice";
+import { setLoading, setUser, setUserAuthenticated } from "../filters/userSlice";
+import Cookies from "universal-cookie";
 
 const userApi = createApi({
   reducerPath: "userApi",
@@ -7,9 +8,9 @@ const userApi = createApi({
   tagTypes: ["User"],
   endpoints: (builder) => ({
     getMe: builder.query({
-      query: (token) => ({
+      query: () => ({
         url: "/me",
-        headers: { token },
+        headers: { token: new Cookies().get('token') },
       }),
       transformResponse: (results) => results.user,
       async onQueryStarted(__, { dispatch, queryFulfilled }) {
@@ -17,7 +18,9 @@ const userApi = createApi({
           const { data } = await queryFulfilled;
           dispatch(setUser(data));
           dispatch(setUserAuthenticated(true));
+          dispatch(setLoading(false))
         } catch (error) {
+          dispatch(setLoading(false))
           console.log(error);
         }
       },
@@ -32,7 +35,24 @@ const userApi = createApi({
       }),
       invalidatesTags: ["User"],
     }),
-  }),
+    uploadAvatar: builder.mutation({
+      query: ({avatar, token}) => ({
+        url: "/me/upload_avatar",
+        method: "PUT",
+        body: {avatar},
+        headers: { token },
+      }),
+      invalidatesTags: ["User"],
+    }),   
+     updatePassword: builder.mutation({
+      query: ({token, ...body}) => ({
+        url: "/password/update",
+        method: "PUT",
+        body,
+        headers: { token },
+      })
+    })
+  })
 });
-export const { useGetMeQuery, useUpdateUserProfileMutation } = userApi;
+export const { useGetMeQuery, useUpdateUserProfileMutation, useUploadAvatarMutation, useUpdatePasswordMutation } = userApi;
 export default userApi;

@@ -10,7 +10,7 @@ export default function UpdateProfile() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
-    const [updateUserProfile, { isLoading, error, data, isSuccess }] = useUpdateUserProfileMutation();
+    const [updateUserProfile, { isLoading, error, isSuccess }] = useUpdateUserProfileMutation();
     const onSubmitHandler = e => {
         e.preventDefault();
         updateUserProfile({email, name, token: new Cookies().get('token')});
