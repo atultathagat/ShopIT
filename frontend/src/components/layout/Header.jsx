@@ -7,6 +7,7 @@ import { useLazyLogoutQuery } from '../../redux/api/authApi';
 export default function Header() {
   const {isLoading} = useGetMeQuery();
   const {user} = useSelector(state => state.auth);
+  const {cartItems} = useSelector(state => state.cart);
 const navigate = useNavigate();
   const [logout] = useLazyLogoutQuery();
   const logoutUserHandler = async () => {
@@ -34,7 +35,7 @@ const navigate = useNavigate();
               {' '}
             </span>
             <span className="ms-1" id="cart_count">
-              0
+              {cartItems?.length}
             </span>
           </a>
 
