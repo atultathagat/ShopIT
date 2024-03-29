@@ -127,8 +127,7 @@ export default function Cart() {
                 <p>
                   Est. total:{" "}
                   <span className="order-summary-values">
-                    $
-                    {cartItems
+                    ₹ {cartItems
                       ?.reduce(
                         (sum, cartItem) =>
                           cartItem.quantity * cartItem.price + sum,

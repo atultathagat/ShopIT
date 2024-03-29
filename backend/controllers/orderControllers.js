@@ -65,7 +65,7 @@ export const updateOrder = catchAsyncErrors(async (req, res, next) => {
       return next(new ErrorHandler(`No order found with the given order id: ${orderItem?.product.toString()}`, 404));
     }
     product.stock -= orderItem.quantity;
-    await product.save({ validateBeforeSave: false });
+    await product.save(o);
   });
   order.orderStatus = req?.body?.status;
   order.deliveredAt = Date.now();

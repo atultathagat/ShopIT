@@ -8,11 +8,12 @@ import CheckoutSteps from "./CheckoutSteps";
 export default function ConfirmOrder() {
   const { cartItems, shippingInfo } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
-  const {itemsPrice, shippingPrice, taxPrice, totalPrice} = calculateOrderCost(cartItems);
+  const { itemsPrice, shippingPrice, taxPrice, totalPrice } =
+    calculateOrderCost(cartItems);
   return (
     <>
       <MetaData title={"Confirm Order Info"} />
-      <CheckoutSteps shipping confirmOrder/>
+      <CheckoutSteps shipping confirmOrder />
       <div className="row d-flex justify-content-between">
         <div className="col-12 col-lg-8 mt-5 order-confirm">
           <h4 className="mb-3">Shipping Info</h4>
@@ -50,7 +51,8 @@ export default function ConfirmOrder() {
 
                   <div className="col-4 col-lg-4 mt-4 mt-lg-0">
                     <p>
-                      {item?.quantity} x ${item?.price} = <b>${(item?.quantity * item?.price).toFixed(2)}</b>
+                      {item?.quantity} x ${item?.price} ={" "}
+                      <b>${(item?.quantity * item?.price).toFixed(2)}</b>
                     </p>
                   </div>
                 </div>
@@ -65,24 +67,27 @@ export default function ConfirmOrder() {
             <h4>Order Summary</h4>
             <hr />
             <p>
-              Subtotal: <span className="order-summary-values">${itemsPrice}</span>
+              Subtotal:{" "}
+              <span className="order-summary-values">₹ {itemsPrice}</span>
             </p>
             <p>
-              Shipping: <span className="order-summary-values">${shippingPrice}</span>
+              Shipping:{" "}
+              <span className="order-summary-values">₹ {shippingPrice}</span>
             </p>
             <p>
-              Tax: <span className="order-summary-values">${taxPrice}</span>
+              Tax: <span className="order-summary-values">₹ {taxPrice}</span>
             </p>
 
             <hr />
 
             <p>
-              Total: <span className="order-summary-values">${totalPrice}</span>
+              Total:{" "}
+              <span className="order-summary-values">₹ {totalPrice}</span>
             </p>
 
             <hr />
             <Link
-            to={'/payment_method'}
+              to={"/payment_method"}
               id="checkout_btn"
               className="btn btn-primary w-100"
             >

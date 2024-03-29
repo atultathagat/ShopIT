@@ -6,11 +6,14 @@ import cors from 'cors';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
+import paymentRoutes from './routes/paymentRoutes.js';
 import { connectDataBase } from './config/dbConnection.js';
 import errorMiddleware from './middlewares/error.js';
 
 const app = express();
-app.use(express.json({ limit: "10mb" }));
+app.use(express.json({ limit: "10mb", verify: (req, res, buf) =>  {
+req.rawBody = buf.toString()
+} }));
 app.use(cors());
 app.use(cookieParser());
 dotenv.config({ path: 'config/config.env' });
@@ -26,6 +29,7 @@ connectDataBase();
 app.use('/api/v1', productRoutes);
 app.use('/api/v1', userRoutes);
 app.use('/api/v1', orderRoutes);
+app.use('/api/v1', paymentRoutes);
 app.use(errorMiddleware);
 const server = app.listen(process.env.PORT, () => {
   console.log(

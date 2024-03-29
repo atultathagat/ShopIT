@@ -11,9 +11,17 @@ const orderApi =  createApi({
         method: 'POST',
         headers: { token }
       })
+    }),  
+    stripCheckoutSession: builder.mutation({
+      query: ({token, ...body}) => ({
+        url: '/payment/checkout_session',
+        body,
+        method: 'POST',
+        headers: { token }
+      })
     })
   })
 });
 
-export const {useCreateNewOrderMutation} = orderApi;
+export const {useCreateNewOrderMutation, useStripCheckoutSessionMutation} = orderApi;
 export default orderApi;

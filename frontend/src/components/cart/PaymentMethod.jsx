@@ -3,7 +3,7 @@ import MetaData from '../layout/MetaData'
 import CheckoutSteps from './CheckoutSteps'
 import { useSelector } from 'react-redux';
 import { calculateOrderCost } from '../../helpers/helper';
-import { useCreateNewOrderMutation } from '../../redux/api/orderApi';
+import { useCreateNewOrderMutation, useStripCheckoutSessionMutation } from '../../redux/api/orderApi';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Cookies from 'universal-cookie';
@@ -12,8 +12,17 @@ export default function PaymentMethod() {
     const { cartItems, shippingInfo } = useSelector((state) => state.cart);
     const [method, setMethod] = useState()
     const {itemsPrice, shippingPrice, taxPrice, totalPrice} = calculateOrderCost(cartItems);
-    const [createNewOrder, { isLoading, error, isSuccess ,data }] = useCreateNewOrderMutation();
+    const [createNewOrder, { error, isSuccess }] = useCreateNewOrderMutation();
+    const [stripCheckoutSession, {data:stripCheckoutData, error: stripCheckoutError, isLoading: stripCheckoutLoading}] = useStripCheckoutSessionMutation()
     const navigate = useNavigate();
+    useEffect(() => {
+      if (stripCheckoutError) {
+        toast.error(stripCheckoutError?.data?.message);
+      }
+      if(stripCheckoutData) {
+          window.location.href = stripCheckoutData?.url;
+      }
+    }, [stripCheckoutError, stripCheckoutData]);
     useEffect(() => {
         if (error) {
           toast.error(error?.data?.message);
@@ -39,6 +48,17 @@ export default function PaymentMethod() {
             }
             createNewOrder({...orderData, token : new Cookies().get('token')})
         }
+        if(method === 'Card') {
+          const orderData = {
+            shippingInfo,
+            orderItems: cartItems,
+            itemsPrice,
+            shippingAmount: shippingPrice,
+            taxAmount: taxPrice,
+            totalAmount: totalPrice
+        }
+        stripCheckoutSession({...orderData, token : new Cookies().get('token')})
+      }
     }
   return (
     <>
@@ -79,7 +99,7 @@ export default function PaymentMethod() {
             </label>
           </div>
 
-          <button id="shipping_btn" type="submit" className="btn py-2 w-100">
+          <button id="shipping_btn" type="submit" className="btn py-2 w-100" disabled={stripCheckoutLoading}>
             CONTINUE
           </button>
         </form>
