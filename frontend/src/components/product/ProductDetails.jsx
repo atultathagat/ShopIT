@@ -4,8 +4,10 @@ import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import Loader from "../layout/loader";
 import StarRatings from "react-star-ratings";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCartItem } from "../../redux/filters/cartSlice";
+import NewReview from "../reviews/NewReview";
+import ListReviews from "../reviews/ListReviews";
 
 export default function ProductDetails() {
   const params = useParams();
@@ -14,6 +16,8 @@ export default function ProductDetails() {
   const { data, isLoading, error, isError } = useGetProductDetailsQuery(
     params.id
   );
+  const {isUserAuthenticated} = useSelector(state => state.auth);
+
   const [quantity, setQuantitiy] = useState(1);
   const { product } = data || {};
   useEffect(() => {
@@ -34,7 +38,7 @@ export default function ProductDetails() {
 
   const increaseQty = () => {
     const count = document.querySelector(".count");
-    if (count.valueAsNumber >= product.stock) {
+    if (count.valueAsNumber >= product?.stock) {
       return;
     }
     setQuantitiy(count.valueAsNumber + 1);
@@ -134,7 +138,7 @@ export default function ProductDetails() {
           id="cart_btn"
           className="btn btn-primary d-inline ms-4"
           onClick={setItemToCart}
-          disabled={product.stock <= 0}
+          disabled={product?.stock <= 0}
         >
           Add to Cart
         </button>
@@ -145,9 +149,9 @@ export default function ProductDetails() {
           Status:{" "}
           <span
             id="stock_status"
-            className={product.stock > 0 ? "greenColor" : "redColor"}
+            className={product?.stock > 0 ? "greenColor" : "redColor"}
           >
-            {product.stock > 0 ? "In Stock" : "Out Of Stock"}
+            {product?.stock > 0 ? "In Stock" : "Out Of Stock"}
           </span>
         </p>
 
@@ -160,10 +164,14 @@ export default function ProductDetails() {
           Sold by: <strong>Tech</strong>
         </p>
 
-        <div className="alert alert-danger my-5" type="alert">
+        {isUserAuthenticated ? 
+        <NewReview productId={product?._id}/> : <div className="alert alert-danger my-5" type="alert">
           Login to post your review.
-        </div>
+        </div>}
       </div>
+      {
+          product.reviews.length > 0 && <ListReviews reviews={product.reviews}/>
+        }
     </div>
   );
 }

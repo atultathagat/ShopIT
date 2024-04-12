@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
+import Cookies from "universal-cookie";
 const orderApi =  createApi({
   reducerPath: 'orderApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/api/v1' }),
@@ -19,9 +19,21 @@ const orderApi =  createApi({
         method: 'POST',
         headers: { token }
       })
+    }),
+    myOrders: builder.query({
+      query: () => ({
+        url: '/me/orders',
+        headers: { token: new Cookies().get('token') },
+      })
+    }),
+    orderDetails: builder.query({
+      query: (id) => ({
+        url: `/orders/${id}`,
+        headers: { token: new Cookies().get('token') },
+      })
     })
   })
 });
 
-export const {useCreateNewOrderMutation, useStripCheckoutSessionMutation} = orderApi;
+export const {useCreateNewOrderMutation, useStripCheckoutSessionMutation, useMyOrdersQuery, useOrderDetailsQuery} = orderApi;
 export default orderApi;

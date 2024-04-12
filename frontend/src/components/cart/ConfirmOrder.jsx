@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { calculateOrderCost } from "../../helpers/helper";
 import CheckoutSteps from "./CheckoutSteps";
+import { useNavigate } from 'react-router-dom';
 
 export default function ConfirmOrder() {
   const { cartItems, shippingInfo } = useSelector((state) => state.cart);

@@ -18,6 +18,9 @@ import Cart from './components/cart/Cart.jsx';
 import Shipping from './components/cart/Shipping.jsx';
 import ConfirmOrder from './components/cart/ConfirmOrder.jsx';
 import PaymentMethod from './components/cart/PaymentMethod.jsx';
+import MyOrders from './order/MyOrders.jsx';
+import OrderDetails from './order/OrderDetails.jsx';
+import Invoice from './components/invoice/Invoice.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -40,6 +43,9 @@ function App() {
             <Route path="/shipping" element={<ProtectedRoute><Shipping/></ProtectedRoute>}/>
             <Route path="/confirm_order" element={<ProtectedRoute><ConfirmOrder/></ProtectedRoute>}/>
             <Route path="/payment_method" element={<ProtectedRoute><PaymentMethod/></ProtectedRoute>}/>
+            <Route path="/me/orders" element={<ProtectedRoute><MyOrders/></ProtectedRoute>}/>
+            <Route path="/me/orders/:id" element={<ProtectedRoute><OrderDetails/></ProtectedRoute>}/>
+            <Route path="/invoice/orders/:id" element={<ProtectedRoute><Invoice/></ProtectedRoute>}/>
           </Routes>
         </div>
         <Footer />
