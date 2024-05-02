@@ -170,7 +170,7 @@ export default function ProductDetails() {
         </div>}
       </div>
       {
-          product.reviews.length > 0 && <ListReviews reviews={product.reviews}/>
+          product?.reviews?.length > 0 && <ListReviews reviews={product?.reviews}/>
         }
     </div>
   );

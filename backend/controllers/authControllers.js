@@ -167,7 +167,9 @@ export const updateUserProfileByAdmin = catchAsyncErrors(async (req, res) => {
 export const deleteUserProfileByAdmin = catchAsyncErrors(async (req, res) => {
   try {
     const user = await userModel.findById(req.params.id);
-    // TODO: Remove avatar from cloudinary
+    if(user?.avatar?.public_id) {
+      await delete_file(user?.avatar?.public_id)
+    }
     await user.deleteOne();
     return res.status(200).json({ success: true });
   } catch {

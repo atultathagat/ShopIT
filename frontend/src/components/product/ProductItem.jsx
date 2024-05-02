@@ -8,8 +8,7 @@ export default function ProductItem({ product, columnSize }) {
       <div className="card p-3 rounded">
         <img
           className="card-img-top mx-auto"
-          src={product?.images[0]?.url}
-          alt="'/images/default_product.png'"
+          src={product?.images[0]?.url??'/images/default_product.png'}
         />
         <div className="card-body ps-3 d-flex justify-content-center flex-column">
           <h5 className="card-title">

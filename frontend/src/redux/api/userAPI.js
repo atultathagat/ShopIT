@@ -5,7 +5,7 @@ import Cookies from "universal-cookie";
 const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000/api/v1" }),
-  tagTypes: ["User"],
+  tagTypes: ["User", "AdminUsers", "AdminUser"],
   endpoints: (builder) => ({
     getMe: builder.query({
       query: () => ({
@@ -51,8 +51,41 @@ const userApi = createApi({
         body,
         headers: { token },
       })
-    })
+    }),
+    getAdminUsers: builder.query({
+      query: () => ({
+        url: `/admin/users`,
+        headers: { token: new Cookies().get("token") },
+      }),
+      providesTags: ['AdminUsers']
+    }),
+    deleteUser: builder.mutation({
+      query: (id) => ({
+        url: `/admin/user/${id}`,
+        method: "DELETE",
+        headers: { token: new Cookies().get("token") },
+      }),
+      invalidatesTags: ['AdminUsers']
+    }),
+    getUserDetails: builder.query({
+      query: (id) => ({
+        url: `/admin/user/${id}`,
+        headers: { token: new Cookies().get("token") },
+      }),
+      providesTags: ['AdminUsers', 'AdminUser']
+    }),
+    updateUser: builder.mutation({
+      query: ({id, body}) => ({
+        url: `/admin/user/${id}`,
+        method: "PUT",
+        body,
+        headers: { token: new Cookies().get("token") },
+      }),
+      invalidatesTags:['AdminUsers']
+    }),
   })
 });
-export const { useGetMeQuery, useUpdateUserProfileMutation, useUploadAvatarMutation, useUpdatePasswordMutation } = userApi;
+export const { useGetMeQuery, useUpdateUserProfileMutation, useUploadAvatarMutation, 
+  useUpdatePasswordMutation, useGetAdminUsersQuery, 
+  useDeleteUserMutation, useGetUserDetailsQuery, useUpdateUserMutation } = userApi;
 export default userApi;
